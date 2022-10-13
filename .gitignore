@@ -1,0 +1,7 @@
+.vscode
+.env
+/model.pt
+/training_metrics
+/misclassified.jpg
+/predictions.json
+.DS_Store
