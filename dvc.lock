@@ -8,8 +8,8 @@ stages:
       size: 66544866
       nfiles: 10
     - path: train.py
-      md5: 90f29a92c178927514c7f4d61a984a8a
-      size: 4865
+      md5: 320ca6d9295c24cc9e63ca5443cf088e
+      size: 4864
     params:
       params.yaml:
         epochs: 15
@@ -25,10 +25,10 @@ stages:
     - path: predictions.json
       md5: 0aa0e279e904572c28c1203ebfa41b29
       size: 310000
-    - path: training_metrics
-      md5: 5abc8d18d6b57bd513acf95e55e2755a.dir
-      size: 947
-      nfiles: 2
-    - path: training_metrics.json
-      md5: 2a592caac70651d359b2331ff674beec
+    - path: training/metrics.json
+      md5: af615cd14bd2d87966a5b1ce7600ec9a
       size: 69
+    - path: training/plots
+      md5: 58092fc230125e6dbf85ec805176b6b3.dir
+      size: 475
+      nfiles: 2
