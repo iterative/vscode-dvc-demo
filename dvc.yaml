@@ -10,11 +10,11 @@ stages:
       - model.pt:
           checkpoint: true
     metrics:
-      - training_metrics.json:
+      - training/metrics.json:
           persist: true
           cache: false
     plots:
-      - training_metrics
+      - training/plots
       - misclassified.jpg
       - predictions.json:
           template: confusion

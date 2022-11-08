@@ -128,7 +128,7 @@ def main():
         torch.nn.Dropout(0.1),
         torch.nn.Linear(64, 10),
     )
-    live = Live("training_metrics", report=None)
+    live = Live("training", report=None)
 
     # Load model.
     if os.path.exists("model.pt"):
@@ -153,7 +153,7 @@ def main():
         # Evaluate and checkpoint.
         metrics, predictions = evaluate(model, x_test, y_test)
         for k, v in metrics.items():
-            live.log(k, v)
+            live.log_metric(k, v)
         missclassified = get_confusion_image(predictions, mnist_test)
         Image.fromarray(missclassified).save("misclassified.jpg")
         live.next_step()
