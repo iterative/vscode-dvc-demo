@@ -14,9 +14,9 @@ stages:
           persist: true
           cache: false
     plots:
-      - training/plots
-      - misclassified.jpg
-      - predictions.json:
+      - training/plots/metrics
+      - training/plots/images
+      - training/plots/sklearn/confusion_matrix.json:
           template: confusion
           x: actual
           y: predicted

@@ -55,24 +55,16 @@ def evaluate(model, x, y):
     _, labels = torch.max(scores, 1)
     actual = [int(v) for v in y]
     predicted = [int(v) for v in labels]
-    predictions = [{
-                    "actual": int(actual),
-                    "predicted": int(predicted)
-                   } for actual, predicted in zip(actual, predicted)]
-    with open("predictions.json", "w") as f:
-        json.dump(predictions, f)
 
     metrics = get_metrics(y, scores, labels)
 
-    return metrics, predictions
+    return metrics, actual, predicted
 
-def get_confusion_image(predictions, dataset):
+def get_confusion_image(actual, predicted, dataset):
     confusion = {}
-    for n, pred in enumerate(predictions):
-        actual = pred["actual"]
-        predicted = pred["predicted"]
+    for n, (a, p) in enumerate(zip(actual, predicted)):
         image = np.array(dataset[n][0]) / 255
-        confusion[(actual, predicted)] = image
+        confusion[(a, p)] = image
 
     max_i, max_j = 0, 0
     for (i, j) in confusion:
@@ -151,11 +143,12 @@ def main():
         train(model, x_train, y_train, params["lr"], params["weight_decay"])
         torch.save(model.state_dict(), "model.pt")
         # Evaluate and checkpoint.
-        metrics, predictions = evaluate(model, x_test, y_test)
+        metrics, actual, predicted = evaluate(model, x_test, y_test)
         for k, v in metrics.items():
             live.log_metric(k, v)
-        missclassified = get_confusion_image(predictions, mnist_test)
-        Image.fromarray(missclassified).save("misclassified.jpg")
+        missclassified = get_confusion_image(actual, predicted, mnist_test)
+        live.log_image("misclassified.jpg", missclassified)
+        live.log_sklearn_plot("confusion_matrix", actual, predicted)
         live.next_step()
 
 
