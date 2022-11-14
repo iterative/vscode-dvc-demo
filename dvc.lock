@@ -8,27 +8,28 @@ stages:
       size: 66544866
       nfiles: 10
     - path: train.py
-      md5: 320ca6d9295c24cc9e63ca5443cf088e
-      size: 4864
+      md5: d3cf46986f0faf10dba0404bec93e3a7
+      size: 4620
     params:
       params.yaml:
         epochs: 15
         lr: 0.003
         weight_decay: 0
     outs:
-    - path: misclassified.jpg
-      md5: 1e5e45896e16b5cee6292761453f897b
-      size: 32899
     - path: model.pt
-      md5: 0ec4d57da441a334164587c979857888
+      md5: 17075b4a10c6a9b4c5c80f6253a06696
       size: 439383
-    - path: predictions.json
-      md5: a951f297b742e3abbdf1832b56d71202
-      size: 310000
     - path: training/metrics.json
-      md5: 331b4a2bd7320769304f6fd28076e83e
-      size: 69
-    - path: training/plots
-      md5: 0d091a88913176735b5a2af9492032ca.dir
-      size: 473
+      md5: 47378921880080fe32d61ed4405faa2b
+      size: 68
+    - path: training/plots/images
+      md5: 2f2d0e915674b3e192db514bb9c9ef32.dir
+      size: 33344
+      nfiles: 1
+    - path: training/plots/metrics
+      md5: 0a0dd2beeee6c7194a15d72e94cbd1a4.dir
+      size: 476
       nfiles: 2
+    - path: training/plots/sklearn/confusion_matrix.json
+      md5: 4a34b6528633c864d960e7c1588904ca
+      size: 610002
