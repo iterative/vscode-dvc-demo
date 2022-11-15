@@ -17,19 +17,12 @@ stages:
         weight_decay: 0
     outs:
     - path: model.pt
-      md5: 17075b4a10c6a9b4c5c80f6253a06696
+      md5: 38126781764ca9fb04496ca2c2173056
       size: 439383
     - path: training/metrics.json
-      md5: 47378921880080fe32d61ed4405faa2b
-      size: 68
-    - path: training/plots/images
-      md5: 2f2d0e915674b3e192db514bb9c9ef32.dir
-      size: 33344
-      nfiles: 1
-    - path: training/plots/metrics
-      md5: 0a0dd2beeee6c7194a15d72e94cbd1a4.dir
-      size: 476
-      nfiles: 2
-    - path: training/plots/sklearn/confusion_matrix.json
-      md5: 4a34b6528633c864d960e7c1588904ca
-      size: 610002
+      md5: af615cd14bd2d87966a5b1ce7600ec9a
+      size: 69
+    - path: training/plots
+      md5: 52a95c5b1855f455c5fd63f901f98772.dir
+      size: 643306
+      nfiles: 4
