@@ -1,3 +1,14 @@
+plots:
+  - acc_v_loss:
+      x: step
+      y:
+        training/plots/metrics/acc.tsv: acc
+        training/plots/metrics/loss.tsv: loss
+  - training/plots/images
+  - training/plots/sklearn/confusion_matrix.json:
+      template: confusion
+      x: actual
+      y: predicted
 stages:
   train:
     cmd: python train.py
@@ -9,14 +20,9 @@ stages:
     outs:
       - model.pt:
           checkpoint: true
+      - training/plots:
+          persist: true
     metrics:
       - training/metrics.json:
           persist: true
           cache: false
-    plots:
-      - training/plots/metrics
-      - training/plots/images
-      - training/plots/sklearn/confusion_matrix.json:
-          template: confusion
-          x: actual
-          y: predicted
