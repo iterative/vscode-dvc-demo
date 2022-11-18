@@ -9,6 +9,11 @@ plots:
       template: confusion
       x: actual
       y: predicted
+  - training/plots/sklearn/confusion_matrix.json:
+      template: jitter.json
+      x: actual
+      y: predicted
+      title: Actual vs Predicted
 stages:
   train:
     cmd: python train.py
