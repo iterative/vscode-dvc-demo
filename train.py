@@ -106,6 +106,14 @@ def get_confusion_image(actual, predicted, dataset):
     return out_matrix
 
 
+def save_hist(predicted, fname):
+    """Save histogram of predictions."""
+    unique, counts = np.unique(predicted, return_counts=True)
+    hist = np.asarray((unique, counts)).T
+    np.savetxt(fname, hist, delimiter=",", fmt="%i", header="digit,preds",
+               comments="")
+
+
 def main():
     """Train model and evaluate on test data."""
     torch.manual_seed(473987)
@@ -143,10 +151,15 @@ def main():
         train(model, x_train, y_train, params["lr"], params["weight_decay"])
         torch.save(model.state_dict(), "model.pt")
         # Evaluate and checkpoint.
-        metrics, actual, predicted = evaluate(model, x_test, y_test)
-        for k, v in metrics.items():
-            live.log_metric(k, v)
+        metrics_train, _, _ = evaluate(model, x_train, y_train)
+        for k, v in metrics_train.items():
+            live.log_metric(f"{k}_train", v)
+        metrics_test, actual, predicted = evaluate(model, x_test, y_test)
+        for k, v in metrics_test.items():
+            live.log_metric(f"{k}_test", v)
+        unique, counts = np.unique(predicted, return_counts=True)
         missclassified = get_confusion_image(actual, predicted, mnist_test)
+        save_hist(predicted, "hist.csv")
         live.log_image("misclassified.jpg", missclassified)
         live.log_sklearn_plot("confusion_matrix", actual, predicted)
         live.next_step()

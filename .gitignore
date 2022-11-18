@@ -5,3 +5,4 @@
 /misclassified.jpg
 /predictions.json
 .DS_Store
+/hist.csv

@@ -1,9 +1,16 @@
 plots:
-  - acc_v_loss:
+  - Accuracy:
       x: step
       y:
-        training/plots/metrics/acc.tsv: acc
-        training/plots/metrics/loss.tsv: loss
+        training/plots/metrics/acc_train.tsv: acc_train
+        training/plots/metrics/acc_test.tsv: acc_test
+      y_label: accuracy
+  - Loss:
+      x: step
+      y:
+        training/plots/metrics/loss_train.tsv: loss_train
+        training/plots/metrics/loss_test.tsv: loss_test
+      y_label: loss
   - training/plots/images
   - training/plots/sklearn/confusion_matrix.json:
       template: confusion
@@ -14,6 +21,11 @@ plots:
       x: actual
       y: predicted
       title: Actual vs Predicted
+  - hist.csv:
+      x: preds
+      y: digit
+      template: bar_horizontal
+      title: Histogram of Predictions
 stages:
   train:
     cmd: python train.py
@@ -27,6 +39,7 @@ stages:
           checkpoint: true
       - training/plots:
           persist: true
+      - hist.csv
     metrics:
       - training/metrics.json:
           persist: true
