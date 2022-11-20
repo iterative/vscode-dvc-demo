@@ -11,21 +11,22 @@ plots:
         training/plots/metrics/loss_train.tsv: loss_train
         training/plots/metrics/loss_test.tsv: loss_test
       y_label: loss
-  - training/plots/images
-  - training/plots/sklearn/confusion_matrix.json:
+  - Confusion matrix:
       template: confusion
       x: actual
-      y: predicted
-  - training/plots/sklearn/confusion_matrix.json:
+      y:
+        training/plots/sklearn/confusion_matrix.json: predicted
+  - Actual vs Predicted:
       template: jitter.json
       x: actual
-      y: predicted
-      title: Actual vs Predicted
+      y:
+        training/plots/sklearn/confusion_matrix.json: predicted
   - hist.csv:
       x: preds
       y: digit
       template: bar_horizontal
       title: Histogram of Predictions
+  - training/plots/images
 stages:
   train:
     cmd: python train.py
