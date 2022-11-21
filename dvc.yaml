@@ -2,14 +2,14 @@ plots:
   - Accuracy:
       x: step
       y:
-        training/plots/metrics/acc_train.tsv: acc_train
-        training/plots/metrics/acc_test.tsv: acc_test
+        training/plots/metrics/train/acc.tsv: train/acc
+        training/plots/metrics/test/acc.tsv: test/acc
       y_label: accuracy
   - Loss:
       x: step
       y:
-        training/plots/metrics/loss_train.tsv: loss_train
-        training/plots/metrics/loss_test.tsv: loss_test
+        training/plots/metrics/train/loss.tsv: train/loss
+        training/plots/metrics/test/loss.tsv: test/loss
       y_label: loss
   - Confusion matrix:
       template: confusion

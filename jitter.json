@@ -8,7 +8,8 @@
   "height": 300,
   "transform": [
     {"calculate": "random()", "as": "randomX"},
-    {"calculate": "random()", "as": "randomY"}
+    {"calculate": "random()", "as": "randomY"},
+    {"sample": 500}
   ],
   "layer": [
     {

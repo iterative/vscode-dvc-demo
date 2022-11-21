@@ -153,10 +153,10 @@ def main():
         # Evaluate and checkpoint.
         metrics_train, _, _ = evaluate(model, x_train, y_train)
         for k, v in metrics_train.items():
-            live.log_metric(f"{k}_train", v)
+            live.log_metric(f"train/{k}", v)
         metrics_test, actual, predicted = evaluate(model, x_test, y_test)
         for k, v in metrics_test.items():
-            live.log_metric(f"{k}_test", v)
+            live.log_metric(f"test/{k}", v)
         unique, counts = np.unique(predicted, return_counts=True)
         missclassified = get_confusion_image(actual, predicted, mnist_test)
         save_hist(predicted, "hist.csv")

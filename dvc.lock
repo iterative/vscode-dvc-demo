@@ -8,7 +8,7 @@ stages:
       size: 66544866
       nfiles: 10
     - path: train.py
-      md5: 6a00dffcbbe4347752e4a18c4233d44f
+      md5: 66a43eeec07e9b63f174d0e028e58634
       size: 5182
     params:
       params.yaml:
@@ -23,9 +23,9 @@ stages:
       md5: 38126781764ca9fb04496ca2c2173056
       size: 439383
     - path: training/metrics.json
-      md5: 3ce01dcbac52e64ade0f3bebcea53b93
-      size: 142
+      md5: 18513f05a8a0cad4885ff4b79f3700b9
+      size: 177
     - path: training/plots
-      md5: b13a2765e29049443545c3e76ec17fea.dir
+      md5: b5e53ac14f138cfb6bca1c7194e675db.dir
       size: 643914
       nfiles: 6
