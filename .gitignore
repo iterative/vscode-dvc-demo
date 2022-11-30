@@ -1,8 +1,6 @@
 .vscode
 .env
+.venv
 /model.pt
-/training_metrics
-/misclassified.jpg
-/predictions.json
 .DS_Store
 /hist.csv
