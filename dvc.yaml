@@ -31,7 +31,7 @@ stages:
   train:
     cmd: python train.py
     deps:
-      - data/MNIST
+      - data
       - train.py
     params:
       - params.yaml:
