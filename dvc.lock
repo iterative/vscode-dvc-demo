@@ -3,10 +3,10 @@ stages:
   train:
     cmd: python train.py
     deps:
-    - path: data/MNIST
-      md5: 0aed307494600d178fbdc0d000d6db38.dir
-      size: 66544866
-      nfiles: 10
+    - path: data
+      md5: ab3353d41bd7a24a20a31f29b64e3b3c.dir
+      size: 66544770
+      nfiles: 8
     - path: train.py
       md5: 66a43eeec07e9b63f174d0e028e58634
       size: 5182
@@ -20,8 +20,8 @@ stages:
       md5: e5caf6a079cb54536c5bbf9fb9bd2d6f
       size: 77
     - path: model.pt
-      md5: 38126781764ca9fb04496ca2c2173056
-      size: 439383
+      md5: 8dc58a5171dbd7c66e2a5b5ac5fb4095
+      size: 439367
     - path: training/metrics.json
       md5: 18513f05a8a0cad4885ff4b79f3700b9
       size: 177
