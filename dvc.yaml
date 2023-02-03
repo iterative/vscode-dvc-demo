@@ -2,14 +2,14 @@ plots:
   - Accuracy:
       x: step
       y:
-        training/plots/metrics/train/acc.tsv: train/acc
-        training/plots/metrics/test/acc.tsv: test/acc
+        training/plots/metrics/train/acc.tsv: acc
+        training/plots/metrics/test/acc.tsv: acc
       y_label: accuracy
   - Loss:
       x: step
       y:
-        training/plots/metrics/train/loss.tsv: train/loss
-        training/plots/metrics/test/loss.tsv: test/loss
+        training/plots/metrics/train/loss.tsv: loss
+        training/plots/metrics/test/loss.tsv: loss
       y_label: loss
   - Confusion matrix:
       template: confusion
@@ -26,7 +26,6 @@ plots:
       y: digit
       template: bar_horizontal
       title: Histogram of Predictions
-  - training/plots/images
 stages:
   train:
     cmd: python train.py
