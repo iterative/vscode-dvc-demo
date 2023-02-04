@@ -26,6 +26,7 @@ plots:
       y: digit
       template: bar_horizontal
       title: Histogram of Predictions
+  - training/plots/images
 stages:
   train:
     cmd: python train.py
