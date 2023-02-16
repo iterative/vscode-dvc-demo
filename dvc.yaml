@@ -17,7 +17,7 @@ plots:
       y:
         training/plots/sklearn/confusion_matrix.json: predicted
   - Actual vs Predicted:
-      template: jitter.json
+      template: scatter_jitter
       x: actual
       y:
         training/plots/sklearn/confusion_matrix.json: predicted
