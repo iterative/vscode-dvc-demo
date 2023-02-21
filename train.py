@@ -55,10 +55,11 @@ def evaluate(model, x, y):
     _, labels = torch.max(scores, 1)
     actual = [int(v) for v in y]
     predicted = [int(v) for v in labels]
+    probs = torch.nn.Softmax(dim=1)(scores)
 
     metrics = get_metrics(y, scores, labels)
 
-    return metrics, actual, predicted
+    return metrics, actual, predicted, probs
 
 def get_confusion_image(actual, predicted, dataset):
     confusion = {}
@@ -114,6 +115,18 @@ def save_hist(predicted, fname):
                comments="")
 
 
+def save_probs(probs, actual, fname, size):
+    probs_series = []
+    sample_indices = np.random.randint(0, len(probs), size)
+    for i in sample_indices:
+        probs_series.append({
+            "actual": actual[i],
+            "prob": float(probs[i][actual[i]])
+        })
+    with open(fname, "w") as f:
+        json.dump(probs_series, f)
+
+
 def main():
     """Train model and evaluate on test data."""
     torch.manual_seed(473987)
@@ -128,7 +141,7 @@ def main():
         torch.nn.Dropout(0.1),
         torch.nn.Linear(64, 10),
     )
-    live = Live(dir="training",dvcyaml=False, report=None)
+    live = Live(dir="training", dvcyaml=False, report=None)
 
     # Load model.
     if os.path.exists("model.pt"):
@@ -151,10 +164,11 @@ def main():
         train(model, x_train, y_train, params["lr"], params["weight_decay"])
         torch.save(model.state_dict(), "model.pt")
         # Evaluate and checkpoint.
-        metrics_train, _, _ = evaluate(model, x_train, y_train)
+        metrics_train, _, _, _ = evaluate(model, x_train, y_train)
         for k, v in metrics_train.items():
             live.log_metric(f"train/{k}", v)
-        metrics_test, actual, predicted = evaluate(model, x_test, y_test)
+        metrics_test, actual, predicted, probs = evaluate(model, x_test, y_test)
+        save_probs(probs, actual, "probs.json", size=500)
         for k, v in metrics_test.items():
             live.log_metric(f"test/{k}", v)
         unique, counts = np.unique(predicted, return_counts=True)
@@ -163,6 +177,8 @@ def main():
         live.log_image("misclassified.jpg", missclassified)
         live.log_sklearn_plot("confusion_matrix", actual, predicted)
         live.next_step()
+
+    live.end()
 
 
 if __name__ == "__main__":

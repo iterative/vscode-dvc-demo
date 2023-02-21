@@ -16,16 +16,15 @@ plots:
       x: actual
       y:
         training/plots/sklearn/confusion_matrix.json: predicted
-  - Actual vs Predicted:
-      template: scatter_jitter
-      x: actual
-      y:
-        training/plots/sklearn/confusion_matrix.json: predicted
   - hist.csv:
       x: preds
       y: digit
       template: bar_horizontal
       title: Histogram of Predictions
+  - probs.json:
+      x: actual
+      y: prob
+      template: scatter
   - training/plots/images
 stages:
   train:
