@@ -25,6 +25,7 @@ plots:
       x: actual
       y: prob
       template: scatter
+      title: Predicted Probabilities
   - training/plots/images
 stages:
   train:
