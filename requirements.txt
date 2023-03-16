@@ -2,3 +2,4 @@ dvc[s3]==2.50.0
 torch==1.13.1
 torchvision==0.14.1
 dvclive==2.3.1
+dvc-render==0.2.0
