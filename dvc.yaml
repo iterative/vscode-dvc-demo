@@ -36,8 +36,7 @@ stages:
     params:
       - params.yaml:
     outs:
-      - model.pt:
-          checkpoint: true
+      - model.pt
       - training/plots:
           persist: true
       - hist.csv
