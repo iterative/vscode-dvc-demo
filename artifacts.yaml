@@ -1,0 +1,3 @@
+vscode-dvc-demo:
+  path: model.pt
+  type: model
