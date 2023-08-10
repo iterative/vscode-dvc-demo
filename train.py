@@ -174,7 +174,7 @@ def main():
         unique, counts = np.unique(predicted, return_counts=True)
         missclassified = get_confusion_image(actual, predicted, mnist_test)
         save_hist(predicted, "hist.csv")
-        live.log_image("misclassified.jpg", missclassified)
+        live.log_image(f"misclassified/{live.step}.jpg", missclassified)
         live.log_sklearn_plot("confusion_matrix", actual, predicted)
         live.next_step()
 
