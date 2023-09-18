@@ -3,7 +3,6 @@ plots:
       x: step
       y:
         training/plots/metrics/train/acc.tsv: acc
-        training/plots/metrics/test/acc.tsv: acc
       y_label: accuracy
   - Loss:
       x: step
