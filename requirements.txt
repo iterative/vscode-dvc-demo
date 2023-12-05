@@ -1,4 +1,4 @@
 git+https://github.com/iterative/dvc.git@refs/pull/9931/head
 torch==2.1.1
 torchvision==0.16.1
-dvclive==3.3.1
+git+https://github.com/iterative/dvclive.git@refs/pull/747/head
