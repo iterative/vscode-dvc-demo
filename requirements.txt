@@ -1,4 +1,4 @@
-dvc[s3]==3.48.0
+dvc[s3]==3.48.1
 torch==2.2.1
 torchvision==0.17.1
 dvclive==3.44.0
